@@ -52,13 +52,14 @@
 }
 
 /* Small screens - MOBILE */
-@media (min-width: 400) and (max-width: 768px) {
-  .pricelist-container {
-    padding: 20px;
-  }
+@media (max-width: 768px) {
   .tablet-desktop,
   .desktop-only {
     display: none; /* Hide tablet & desktop columns */
+  }
+
+  .pricelist-table {
+    margin-inline: 16px;
   }
 
   .mobile-tablet-desktop {
@@ -69,6 +70,8 @@
   .pricelist-table td {
     font-size: 12px;
     padding: 8px;
+
+    white-space: normal; /* Allow wrapping on small screens */
   }
 }
 
