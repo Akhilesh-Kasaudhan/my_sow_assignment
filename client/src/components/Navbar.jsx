@@ -69,7 +69,7 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
         <div className="navbar-menu desktop-menu">
           <ul className="nav-links">
             <li className="nav-item">
-              <a href="#home" className="nav-link">
+              <a href="/" className="nav-link">
                 {t("navbar_home")}
               </a>
             </li>
