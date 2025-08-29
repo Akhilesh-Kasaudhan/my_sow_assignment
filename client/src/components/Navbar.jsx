@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { AlignJustify } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -92,6 +93,11 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
                 {t("navbar_contact")}
               </a>
             </li>
+            <li className="nav-item">
+              <a href="/price-list" className="nav-link">
+                {t("navbar_price_list")}
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -181,6 +187,16 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
               >
                 {t("navbar_contact")}
               </a>
+            </li>
+
+            <li className="mobile-nav-item">
+              <Link
+                to="/price-list"
+                className="mobile-nav-link"
+                onClick={toggleMobileMenu}
+              >
+                {t("navbar_price_list")}
+              </Link>
             </li>
           </ul>
         </div>

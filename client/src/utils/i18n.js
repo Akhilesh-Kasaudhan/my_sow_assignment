@@ -23,6 +23,7 @@ i18n.use(initReactI18next).init({
         navbar_about: "About us",
         navbar_contact: "Contact Us",
         navbar_terms: "Terms",
+        navbar_price_list: "Price List",
       },
     },
     sv: {
@@ -46,6 +47,7 @@ i18n.use(initReactI18next).init({
         navbar_about: "Om Oss",
         navbar_contact: "Kontakta Oss",
         navbar_terms: "Villkor",
+        navbar_price_list: "Prislista",
       },
     },
   },
