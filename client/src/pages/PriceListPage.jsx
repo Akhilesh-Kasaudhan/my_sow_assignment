@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./PriceListPage.css";
+import { BASE_URL } from "../utils/constants";
 
 const PriceListPage = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ const PriceListPage = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:3000/api/pricelist");
+      const response = await fetch(`${BASE_URL}/api/pricelist`);
       if (!response.ok) throw new Error("Failed to fetch products");
       const data = await response.json();
       setProducts(data);
@@ -32,14 +33,11 @@ const PriceListPage = () => {
     try {
       setSaving(true);
       const product = products.find((p) => p.id === id); // whole product object
-      const response = await fetch(
-        `http://localhost:3000/api/pricelist/update`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(product),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/api/pricelist/update`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+      });
 
       if (!response.ok) throw new Error("Failed to update product");
       await fetchProducts(); // refetch updated list

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Terms.css";
 import { useTranslation } from "react-i18next";
+import { BASE_URL } from "../utils/constants";
 
 const TermsAndConditionPage = ({ selectedLanguage }) => {
   const [terms, setTerms] = useState("");
@@ -8,7 +9,7 @@ const TermsAndConditionPage = ({ selectedLanguage }) => {
 
   useEffect(() => {
     const fetchTerms = async () => {
-      const response = await fetch("http://localhost:3000/api/terms");
+      const response = await fetch(`${BASE_URL}/api/terms`);
       const data = await response.json();
 
       const langCode = selectedLanguage === "english" ? "en" : "sv";
