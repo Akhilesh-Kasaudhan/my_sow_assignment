@@ -53,6 +53,9 @@
 
 /* Small screens - MOBILE */
 @media (max-width: 768px) {
+  .pricelist-container {
+    padding: 5px;
+  }
   .tablet-desktop,
   .desktop-only {
     display: none; /* Hide tablet & desktop columns */
