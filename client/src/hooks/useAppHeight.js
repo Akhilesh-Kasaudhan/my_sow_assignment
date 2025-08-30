@@ -3,13 +3,22 @@ import { useEffect } from "react";
 export default function useAppHeight() {
   useEffect(() => {
     const setAppHeight = () => {
-      document.documentElement.style.setProperty(
-        "--app-height",
-        `${window.innerHeight}px`
-      );
+      const height = window.innerHeight;
+      document.documentElement.style.setProperty("--app-height", `${height}px`);
     };
-    window.addEventListener("resize", setAppHeight);
+
+    // Set on load
     setAppHeight();
-    return () => window.removeEventListener("resize", setAppHeight);
+
+    // Events to catch browser bar changes
+    window.addEventListener("resize", setAppHeight);
+    window.addEventListener("orientationchange", setAppHeight);
+    document.addEventListener("visibilitychange", setAppHeight);
+
+    return () => {
+      window.removeEventListener("resize", setAppHeight);
+      window.removeEventListener("orientationchange", setAppHeight);
+      document.removeEventListener("visibilitychange", setAppHeight);
+    };
   }, []);
 }
