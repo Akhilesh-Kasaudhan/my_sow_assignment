@@ -269,6 +269,13 @@ body {
 
 /* Small mobile */
 @media (max-width: 576px) {
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+  }
+
   .navbar-container {
     padding: 20px 60px;
     margin: 0 auto;
