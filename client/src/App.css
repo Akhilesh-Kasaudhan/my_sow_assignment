@@ -10,7 +10,7 @@ body {
   background: url("./assets/background-image.jpg") no-repeat center center fixed;
   background-size: cover;
   font-family: "Segoe UI", sans-serif;
-  min-height: 100dvh;
+  min-height: var(--app-height);
   display: flex;
   flex-direction: column;
 }

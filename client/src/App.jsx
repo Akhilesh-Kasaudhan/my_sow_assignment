@@ -4,9 +4,11 @@ import TermsAndConditionPage from "./pages/TermsAndConditionPage";
 import PriceListPage from "./pages/PriceListPage";
 import Navbar from "./components/Navbar";
 import "./App.css";
+import useAppHeight from "./hooks/useAppHeight";
 
 const App = () => {
   const [selectedLanguage, setSelectedLanguage] = React.useState("english");
+  useAppHeight();
   return (
     <BrowserRouter>
       <Navbar
