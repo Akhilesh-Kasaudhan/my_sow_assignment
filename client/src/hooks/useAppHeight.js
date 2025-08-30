@@ -3,22 +3,27 @@ import { useEffect } from "react";
 export default function useAppHeight() {
   useEffect(() => {
     const setAppHeight = () => {
-      const height = window.visualViewport?.height || window.innerHeight;
+      const height = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
       document.documentElement.style.setProperty("--app-height", `${height}px`);
     };
 
     setAppHeight();
 
-    window.addEventListener("resize", setAppHeight);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", setAppHeight);
+      window.visualViewport.addEventListener("scroll", setAppHeight);
+    }
+
     window.addEventListener("orientationchange", setAppHeight);
-    window.addEventListener("scroll", setAppHeight);
-    document.addEventListener("visibilitychange", setAppHeight);
 
     return () => {
-      window.removeEventListener("resize", setAppHeight);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", setAppHeight);
+        window.visualViewport.removeEventListener("scroll", setAppHeight);
+      }
       window.removeEventListener("orientationchange", setAppHeight);
-      window.removeEventListener("scroll", setAppHeight);
-      document.removeEventListener("visibilitychange", setAppHeight);
     };
   }, []);
 }
