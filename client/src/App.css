@@ -10,7 +10,7 @@ body {
   background: url("./assets/background-image.jpg") no-repeat center center fixed;
   background-size: cover;
   font-family: "Segoe UI", sans-serif;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -269,13 +269,6 @@ body {
 
 /* Small mobile */
 @media (max-width: 576px) {
-  body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    min-height: 100vh;
-  }
-
   .navbar-container {
     padding: 20px 60px;
     margin: 0 auto;
