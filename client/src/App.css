@@ -11,12 +11,13 @@ body {
   background-size: cover;
   font-family: "Segoe UI", sans-serif;
   min-height: var(--app-height);
-  display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
 }
-/* Navbar Styles */
+
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -28,7 +29,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2.5rem;
+  padding: 20px;
   margin: 0 auto;
 }
 

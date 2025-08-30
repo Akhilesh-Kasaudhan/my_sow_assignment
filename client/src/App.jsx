@@ -10,24 +10,26 @@ const App = () => {
   const [selectedLanguage, setSelectedLanguage] = React.useState("english");
   useAppHeight();
   return (
-    <BrowserRouter>
-      <Navbar
-        selectedLanguage={selectedLanguage}
-        setSelectedLanguage={setSelectedLanguage}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <TermsAndConditionPage selectedLanguage={selectedLanguage} />
-          }
+    <>
+      <BrowserRouter>
+        <Navbar
+          selectedLanguage={selectedLanguage}
+          setSelectedLanguage={setSelectedLanguage}
         />
-        <Route
-          path="/price-list"
-          element={<PriceListPage selectedLanguage={selectedLanguage} />}
-        />
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <TermsAndConditionPage selectedLanguage={selectedLanguage} />
+            }
+          />
+          <Route
+            path="/price-list"
+            element={<PriceListPage selectedLanguage={selectedLanguage} />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 
