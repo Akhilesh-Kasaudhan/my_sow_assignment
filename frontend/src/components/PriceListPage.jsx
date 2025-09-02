@@ -7,10 +7,9 @@ const PriceListPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [saving, setSaving] = useState(false); // Track saving state
+  const [saving, setSaving] = useState(false);
   const { t } = useTranslation();
 
-  // Fetch products from backend
   const fetchProducts = async () => {
     try {
       setLoading(true);
@@ -32,7 +31,7 @@ const PriceListPage = () => {
   const handleUpdateProduct = async (id) => {
     try {
       setSaving(true);
-      const product = products.find((p) => p.id === id); // whole product object
+      const product = products.find((p) => p.id === id);
       const response = await fetch(`${BASE_URL}/api/pricelist/update`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -40,7 +39,7 @@ const PriceListPage = () => {
       });
 
       if (!response.ok) throw new Error("Failed to update product");
-      await fetchProducts(); // refetch updated list
+      await fetchProducts();
     } catch (err) {
       console.error("Error updating product:", err);
     } finally {
@@ -48,7 +47,6 @@ const PriceListPage = () => {
     }
   };
 
-  // Handle input change in local state
   const handleInputChange = (id, field, value) => {
     setProducts((prev) =>
       prev.map((p) => (p.id === id ? { ...p, [field]: value } : p))
@@ -111,7 +109,7 @@ const PriceListPage = () => {
           <tbody>
             {products
               .slice()
-              .sort((a, b) => a.article_no.localeCompare(b.article_no)) // sort alphabetically or numerically if needed
+              .sort((a, b) => a.article_no.localeCompare(b.article_no))
               .map((product, index) => (
                 <tr
                   key={product.id}

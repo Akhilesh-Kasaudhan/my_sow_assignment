@@ -8,7 +8,7 @@ i18n.use(initReactI18next).init({
         terms_title: "Terms",
         close_button: "Close and Go Back",
         price_list_title: "Price List",
-        price_list_article_no: "Artical no.",
+        price_list_article_no: "Article no.",
         price_list_product_service: "Product/service",
         price_list_in_price: "In price",
         price_list_price: "Price",

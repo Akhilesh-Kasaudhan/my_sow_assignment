@@ -1,7 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
-import { AlignJustify } from "lucide-react";
+import React from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { AlignJustify } from "lucide-react";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -21,7 +23,9 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
       flag: "swedish-flag.png",
     },
   ];
-
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
   const getCurrentLanguage = () => {
     return languages.find((lang) => lang.code === selectedLanguage);
   };
@@ -36,11 +40,6 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -53,25 +52,26 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        {/* Mobile hamburger menu */}
+    <div>
+      <div className="nav-container">
         <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
           <AlignJustify className="hamburger-icon" />
         </div>
-
-        <div className="navbar-logo">
-          <img src="icon.png" alt="Logo" className="logo-image" />
+        <div className="logo-container">
+          <img
+            src="icon.png"
+            alt=""
+            style={{ height: "50px", width: "50px" }}
+          />
         </div>
-
-        {/* Desktop menu */}
         <div className="navbar-menu desktop-menu">
           <ul className="nav-links">
             <li className="nav-item">
-              <a href="/" className="nav-link">
+              <Link to="/" className="nav-link">
                 {t("navbar_home")}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a href="#order" className="nav-link">
@@ -101,7 +101,6 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
           </ul>
         </div>
 
-        {/* Language selector - always visible */}
         <div className="navbar-language">
           <div className="language-selector" ref={dropdownRef}>
             <div className="language-display" onClick={toggleDropdown}>
@@ -140,17 +139,16 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
           </div>
         </div>
 
-        {/* Mobile menu */}
         <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
           <ul className="mobile-nav-links">
             <li className="mobile-nav-item">
-              <a
-                href="#home"
+              <Link
+                to="/"
                 className="mobile-nav-link"
                 onClick={toggleMobileMenu}
               >
                 {t("navbar_home")}
-              </a>
+              </Link>
             </li>
             <li className="mobile-nav-item">
               <a
@@ -201,7 +199,7 @@ const Navbar = ({ selectedLanguage, setSelectedLanguage }) => {
           </ul>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 
